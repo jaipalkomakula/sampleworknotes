@@ -1,0 +1,56 @@
+- name: Disable ufw
+  ufw:
+    state: disabled
+
+- name: Disable Swap and ufw
+  shell: |
+    swapoff -a
+    ufw disable
+
+- name: remove swap entrys  in /etc/fstab
+  replace:
+    path: /etc/fstab
+    regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
+    replace: '#\1'
+
+- name: sysctl setting for kubernates networking
+  shell: |
+    echo -n "net.bridge.bridge-nf-call-ip6tables = 1" >> /etc/sysctl.d/kubernetes.conf
+    echo -n "net.bridge.bridge-nf-call-iptables = 1" >> /etc/sysctl.d/kubernetes.conf1
+
+
+- name: reload sysctl
+  command: sysctl --system
+
+- name: Install docker engine
+  shell: |
+    apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    apt update && apt install -y docker-ce=5:19.03.10~3-0~ubuntu-focal containerd.io
+
+- name: Add an Apt key form URL
+  apt_key:
+    url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+    state: present
+
+- name: check file exists
+  stat:
+    path: '/etc/apt/sources.list.d/kubernetes.list'
+  register: path
+
+- name: create a file, when it doesnot exists
+  file:
+    path: '/etc/apt/sources.list.d/kubernetes.list'
+    state: touch
+  when: not path.stat.exists
+
+- name: Add line into file
+  lineinfile:
+    path: '/etc/apt/sources.list.d/kubernetes.list'
+    line: 'deb https://apt.kubernetes.io/ kubernetes-xenial main'
+
+- name: Install a list of packages
+  shell: |
+    apt update && apt install -y kubeadm=1.19.2-00 kubelet=1.19.2-00 kubectl=1.19.2-00
+

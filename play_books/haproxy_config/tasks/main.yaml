@@ -1,0 +1,24 @@
+- name: Install Haproxy 
+  yum:
+    name: haproxy
+    state: present
+
+- name: enabled haproxy services
+  service:
+    name: haproxy
+    enabled: yes
+
+- name: copy templete
+  template:
+    src: "haproxy.cfg.j2"
+    dest: "/etc/haproxy/haproxy.cfg"
+    owner: root
+    group: root
+    mode: 0644
+  register: haproxycfg
+
+- name: reload haproxy service
+  service:
+    name: haproxy
+    state: reloaded
+  when: haproxycfg.changed

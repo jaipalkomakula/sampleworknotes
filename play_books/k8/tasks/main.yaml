@@ -1,0 +1,11 @@
+- name: Prerequisite setup
+  import_tasks: pre_setup.yaml
+  when: ansible_os_family == 'Debian'
+
+  #- name: k8 master node setup
+  #import_tasks: k8_master.yaml
+  #when: ansible_os_family == 'Debian'
+
+  #- name: k8 worker node setup 
+  #import_tasks: k8_worker.yaml
+  #when: ansible_os_family == 'Debian'

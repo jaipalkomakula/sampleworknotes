@@ -1,0 +1,4 @@
+- hosts: ha
+  remote_user: root
+  roles:
+    - haproxy_config
