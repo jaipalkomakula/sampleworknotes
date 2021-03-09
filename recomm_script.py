@@ -170,8 +170,8 @@ def salt_command(command,recomm_host):
     return (result)
 
 def post_to_slack(message):
-    #webhook_url = 'https://hooks.slack.com/services/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'
-    webhook_url = 'https://hooks.slack.com/services/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'
+    #webhook_url = 
+    webhook_url = 'https://hooks.slack.com/services/'
     slack_data = json.dumps({'text': 'disks are under oos \n','blocks': message,'username': 'Scality Alert','icon_emoji': ':scality:'})
     proxies = {
     'http': 'http://resappdprx.email.comcast.net:3128',
