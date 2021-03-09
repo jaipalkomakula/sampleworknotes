@@ -12,9 +12,9 @@ This repo contains general documentation for the ArgoCD concepts and project.
 
 ### ArgoCD Architecture
 
-![Argocd Architecture](https://github.comcast.com/jkomak237/kubernetes/blob/master/docs/images/ArgoCD_architecture_1.png)
-![Gitops_Argocd](https://github.comcast.com/jkomak237/kubernetes/blob/master/docs/images/ArgoCD_architecture_2.png)
-![k8_ArgoCD](https://github.comcast.com/jkomak237/kubernetes/blob/master/docs/images/ArgoCD_work_3.png)
+![Argocd Architecture](https://github.com/jaipalkomakula/sampleworknotes/blob/master/ArgoCD_architecture_1.png)
+![Gitops_Argocd](https://github.com/jaipalkomakula/sampleworknotes/blob/master/ArgoCD_architecture_2.png)
+![k8_ArgoCD](https://github.com/jaipalkomakula/sampleworknotes/blob/master/ArgoCD_work_3.png)
 
 
 ### ArgoCD Components
