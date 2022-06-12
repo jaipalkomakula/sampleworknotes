@@ -174,8 +174,8 @@ def post_to_slack(message):
     webhook_url = 'https://hooks.slack.com/services/'
     slack_data = json.dumps({'text': 'disks are under oos \n','blocks': message,'username': 'Scality Alert','icon_emoji': ':scality:'})
     proxies = {
-    'http': 'http://resappdprx.email.comcast.net:3128',
-    'https': 'http://resappdprx.email.comcast.net:3128'
+    'http': 'http://resappdprx.email.xxx.net:3128',
+    'https': 'http://resappdprx.email.xxx.net:3128'
      }
     slack_data = json.dumps({'blocks': message,'username': 'Scality Alert','icon_emoji': ':scality:'})
     response = requests.post(
