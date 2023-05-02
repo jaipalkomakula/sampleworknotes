@@ -240,8 +240,8 @@ def decomm(host_list,disk_oo):
     webhook_url = 'https://hooks.slack.com/services/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'
     slack_data = json.dumps({'text': '\n','blocks': slack_msg,'username': 'Scality Alert','icon_emoji': ':scality:'})
     proxies = {
-    'http': 'http://resappdprx.email.comcast.net:3128',
-    'https': 'http://resappdprx.email.comcast.net:3128'
+    'http': 'http://resappdprx.email.xxx.net:3128',
+    'https': 'http://resappdprx.email.xxx.net:3128'
      }
     response = requests.post(
         webhook_url, data=slack_data, proxies=proxies,
